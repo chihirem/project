@@ -1,0 +1,207 @@
+1.	To display the current working directory, the command is: 
+	cmd:pwd
+        The output is as follows.
+        /home/trg1
+
+2.	Display the path to and name of your HOME directory.
+	cmd:pwd
+	output:/home/user8/shiri_129091
+
+3.	Display the login name using which you have logged into the system
+	cmd:who am i
+	output:user8    pts/57       2017-06-09 14:22 (din51002662.corp.capgemini.com)
+
+4.	Display the hidden files of your current directory.
+	cmd:ls -a
+
+5.	List the names of all the files in your home directory.
+	cmd:ls
+
+6.	Using the long listing format to display the files in your directory. 
+	cmd: ls -l
+
+7.	List the files beginning with chap followed by any number or any lower case alphabet.  (Example, it should display all files whose names are like chap1, chap2, chap3 ……., chapa,ahapb,chapc,……..)
+	cmd: ls chap[0-9] chap[a-z]
+
+8.	Give appropriate command to create a directory called C_prog under your home directory. (Note: Check the directory using ls)
+	cmd: mkdir c.prog
+
+9.	Create the following directories under your home directory. (Note: Check using ls)
+	newdir
+	newdirectory
+	cmd: mkdir newdir
+	     mkdir newdirectory
+
+10.	List the names of all the files, including the contents of the sub directories under your home directory.
+	cmd:
+	     ls -R
+
+11.	Remove the directory called newdirectory from your working directory.
+	cmd: rmdir newdirectory
+
+12.	Create a directory called temp under your home directory.
+	cmd:mkdir temp
+
+13.	Remove the directory called newdir under your home directory and verify the above with the help of the directory listing command.	
+	cmd: rmdir newdir
+
+14.	Create another directory directorynew under the temp directory.
+	cmd: mkdir -p temp/directorynew
+
+15.	Change the directory to your home directory.
+	cmd:cd /home/blr7/
+
+16.	From your home directory, change the directory to directorynew using relative and absolute path.
+	cmd:
+	    ABSOLUTE PATH: cd /home/user8/shiri/temp/directorynew
+	    RELATIVE PATH: cd /shiri/temp/directorynew
+
+17.	Remove the directory called c_prog, which is in your home directory.
+	cmd: rmdir c_prog
+	   
+	   
+18.	Change to the directory /etc and display the files present in it.
+	cmd:cd etc
+	    ls
+
+19.	List the names of all the files that begin with a dot in the /usr/bin directory.
+	cmd:cd /usr/bin
+	     ls -a | grep "^\."
+
+20.	Create a file first.unix with the following contents.	
+	Hi! Good Morning everybody.
+	Welcome to the First exercise on UNIX.
+	Hope you enjoy doing the assignments.
+	cmd: cat > first.unix
+
+21.	Copy the file first.unix in your home directory to first.unics.
+	cmd: cp first.unix first.unics
+
+22. 	List the contents of first.unix and first.unics with a single command.
+	cmd:cat first.unix first.unic
+
+23. 	Create a new directory under the temp directory.
+	cmd: cd temp
+	     mkdir new
+
+24. 	From your home directory, copy all the files to the directory created under the temp
+	sub directory.
+	cmd: cp first.unix temp
+	     cd temp
+	     mv first.unix directnew
+
+25. 	Move the file first.unix to the directory temp as second.unix
+	cmd:mv first.unix temp
+	    mv first.unix second.unix
+
+26. 	Remove the file called first.unics from the home directory.
+	cmd:rm -r first.unics
+
+27. 	Change your directory to temp and issue the command rm *. What do you observe?
+	cmd: cd temp
+	     rm *
+		cant't remove 'directorynew' is a directory
+
+28. 	Move all files whose names end with a, c and o to the HOME directory.
+	cmd:mv a* c* o* /home/blr7
+
+29. 	Copy all files that end with a ‘UNIX’ to the temp directory.
+	cmd:[blr7@NDAUnix ~]$ cat > 1first.unix
+	hii gud morning hav a nice day
+	[blr7@NDAUnix ~]$ cd temp
+	[blr7@NDAUnix temp]$ cp *unix /home/blr7/
+	[blr7@NDAUnix temp]$ ls
+	directory     directorynew1  first_unics  newdir         subdir
+	directorynew  first_12unix   new          new_directory
+
+
+30. 	Issuing a single command, remove all the files from the directory temp and the
+	directory itself.
+	cmd:rm -ri temp
+
+31. 	Try commands cp and mv with invalid number of arguments and note the results.
+	cmd:cp file1.sh test hello.txt file4.sh
+
+	output : cp: target `file4.sh' is not a directory
+
+   	 cp file1.sh test ques31 ques31
+
+	output : cp: target `ques31' is not a directory  (ques31 is a directory)
+
+   	 mv file1.sh test hello.txt file4.sh
+	
+	output : mv: target `file4.sh' is not a directory
+
+
+32. 	Use the cat command to create a file friends, with the following data:
+	Madhu 6966456 09/07/68
+	Jamil 2345215 08/09/67
+	Ajay 5546785 01/04/66
+	Mano 7820022 09/07/68
+	David 8281292 09/09/60
+	Simmi 7864563 12/12/70
+	Navin 2224311 30/05/68
+	The fields should be separated by a tab.
+	cmd:cat >friends.lst
+
+33. 	Display contents of the file friends.
+	cmd:cat friends.lst
+
+34. 	Copy contents of friends to newfriend without using the cp command.
+	cmd:[blr7@NDAUnix ~]$ cat friends.lst>newfriends.lst
+	[blr7@NDAUnix ~]$ cat newfriends.lst
+
+
+35. 	Display contents of the file friends and newfriends in a single command.
+	cmd:cat friends.lst newfriends.lst
+
+36.	Find all users currently working on the system and store the output in a file named as users.
+	[blr7@NDAUnix ~]$  who|cat >users
+	[blr7@NDAUnix ~]$ cat users
+
+37.	Append contents of friends file to the file, users.
+	[blr7@NDAUnix ~]$  cat friends.lst>>users
+			
+38.	Display current system date and time and record your observations.  How is the time displayed?
+	date
+    	the date is displayed as follows :
+        Thu Nov  3 17:11:27 IST 2016
+
+39.	Display calendar for the month and year of your birth.
+	[blr7@NDAUnix ~]$ cal 04 1994
+     	April 1994
+Su Mo Tu We Th Fr Sa
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29 30
+
+40.	Try following commands and record your observations.
+	date “+ %”
+	date “+%m”
+	date “+%D” 
+	date “+%/%Training Activity”
+	date “+%Training Activity”
+	date “+%r”
+
+	date "+ %"
+    	 output :  %
+     
+    	 date "+%m"
+     	output :  05
+
+     	date "+%D"
+     	output :  13/05/17
+     	date "+%/%Training Activity"
+     	[blr7@NDAUnix ~]$ date "+%/%Training Activity"
+	%/09:47:49raining Activity
+
+     	date "+%Training Activity"
+     	output :   
+	09:50:55raining Activity
+
+     	date "+%r"
+    	 output : 09:52:17 AM
+
+ 

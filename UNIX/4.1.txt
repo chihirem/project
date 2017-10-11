@@ -1,0 +1,331 @@
+4.1: Using Pipes and Filters:
+
+1: Redirect the content of the help document ls, into a file called as lsdoc.
+    Man ls > lsdoc
+
+
+   ls [OPTION]... [FILE]...
+
+    DESCRIPTION
+       List  information  about  the FILEs (the current directory by default).
+       Sort entries alphabetically if none of -cftuvSUX nor --sort.
+
+       Mandatory arguments to long options are  mandatory  for  short  options
+       too.
+
+       -a, --all
+              do not ignore entries starting with .
+
+       -A, --almost-all
+              do not list implied . and ..
+
+
+2: Display the content of the lsdoc page wise.
+
+	[blr7@NDAUnix ~]$  more lsdoc    
+
+3: Display only the first 4 lines of the lsdoc file.
+	[blr7@NDAUnix ~]$ head  -4 lsdoc
+	LS(1)  User Commands    LS(1)
+
+4: Display only the last 7 lines of the file lsdoc.
+	[blr7@NDAUnix ~]$ tail -7 lsdoc
+	[blr7@NDAUnix ~]$ head -4 lsdoc
+
+5: Remove the file lsdoc.
+[blr7@NDAUnix ~]$ rm -i lsdoc
+rm: remove regular file `lsdoc'? y
+
+
+6: There will be B’day celebration from the friends file, find how many B’day parties will be held.  If two of the friends have the B’date on the same day, then we will be having one party on that day.
+[blr7@NDAUnix ~]$ cut -f2 -d" "|sort -n  friends.txt | uniq –u | wc -l
+Madhavi 2000
+Madrid  2001
+Sangi    2004
+Sindhu  2005
+Vaishali 2001
+
+
+7: Display the lines starting with Ma, in the file friends.    
+[blr7@NDAUnix ~]$ grep "^Ma|i$|id$" friends.txt
+Madhu 25698 08/08/78
+Mathi 89768 09/09/78                                
+
+8: Display the lines starting with Ma, ending with i or ending with id, in the file friends.
+[blr7@NDAUnix ~]$ cut -f1 -d" " friends.txt|egrep "^Ma|id$|i$"
+Madhavi
+Madrid
+David
+[blr7@NDAUnix ~]$ cat friends.txt
+Madhavi 2000
+Madrid 2001
+David  2003
+
+9: Print all the files and the directory files from the current directory across all the sub directories, along with its path
+ 
+
+10: Print only the Directory files.	
+
+[blr7@NDAUnix ~]$ ls -d */
+etc/  new_directory/  temp1/
+
+11: Display the files starting with chap, along with its path.
+[blr7@NDAUnix ~]$ ls chap*
+chap1  chap4  chap5  chap9  chapa  chapab  chap.txt
+
+12: Sort the file friends in ascending order of names. 
+[blr7@NDAUnix ~]$ sort friends.txt
+Ajay 27896 07/07/89
+Jimmi 78973 12/02/68
+Madhu 25698 08/08/78
+Mathi 89768 09/09/78
+Navin 67856 07/07/69
+
+13: Display the contents of the file friends in uppercase letters.
+[blr7@NDAUnix ~]$ tr "[a-z]" "[A-Z]" < friends.txt
+AJAY 27896 07/07/89
+MADHU 25698 08/08/78
+JIMMI 78973 12/02/68
+NAVIN 67856 07/07/69
+MATHI 89768 09/09/78
+
+14: Store the contents of your home directory in a file called dir.
+Ls –l <dir
+ 
+
+15: From the above file dir, display the file permissions and the name of the file only.
+-rw-rw-r--
+[blr7@NDAUnix ~]$ cat dir|tr -s ' '|cut -d " " -f1,9
+total
+-rw-rw-r-- abc.txt
+-rw-rw-r-- ass.sh
+-rw-rw-r-- chap.txt
+-rw-rw-r-- dir
+-rw-rw-r-- ed.sh
+-rw-rw-r-- employee.dat
+-rw-rw-r-- emp.lst
+-rw-rw-r-- emp.sh
+-rw-rw-r-- emp.txt
+drwxrwxr-x etc
+-rw-rw-r-- files
+-rw-rw-r-- file.sh
+-rw-rw-r-- first.unix
+-rw-rw-r-- friends.txt
+-rw-rw-r-- friend.txt
+-rw-rw-r-- func.sh
+-rw-rw-r-- function.sh
+-rw-rw-r-- help
+-rw-rw-r-- ijk.txt
+-rw-rw-r-- prems
+-rw-rw-r-- size
+-rw-rw-r-- telephonedirectory.txt
+drwxrwxr-x temp
+-rw-rw-r-- xyz.txt
+
+16: From the same dir file, store only the file names in a file called files.
+[blr7@NDAUnix ~]$ cat dir|tr -s ' '|cut -d " " -f9 >files
+[blr7@NDAUnix ~]$ cat files
+
+abc.txt
+ass.sh
+chap.txt
+dir
+ed.sh
+employee.dat
+emp.lst
+emp.sh
+emp.txt
+etc
+files
+file.sh
+first.unix
+friends.txt
+friend.txt
+func.sh
+function.sh
+help
+ijk.txt
+prems
+size
+telephonedirectory.txt
+temp
+xyz.txt
+
+
+17: From the same dir file, store only the permissions of files in a file called perms.
+[blr7@NDAUnix ~]$ cat dir|tr -s ' '|cut -d " " -f1 >perms
+[blr7@NDAUnix ~]$ cat perms
+total
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+drwxrwxr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+drwxrwxr-x
+-rw-rw-r--
+
+
+18: From the same dir file, store only the file sizes in a file called sizes.
+[blr7@NDAUnix ~]$ cat dir|tr -s ' '|cut -d " " -f5|cat >filesize
+[blr7@NDAUnix ~]$ cat filesize
+
+5
+350
+33
+0
+121
+166
+46
+41
+78
+4096
+73
+12
+104
+104
+0
+117
+120
+18
+44
+108
+46
+93
+4096
+5
+
+
+19: Display the file names, sizes and permissions from your directory in that order. 
+Cat files filesize perms
+
+
+20: Display the number of users working on the system.
+ 
+
+21: Find out the smallest file in your directory.
+
+22: Display the total number of lines present in the file friends.
+		Wc –l friends.txt
+	5
+
+23:Create the following fixed record format files (with “|” delimiter between fields) with the structure given below, and populate them with relevant data use these files to solve following questions
+emp.lst: Empid(4),Name(18),Designation(9),Dept(10),Date of  Birth(8),Salary(5)
+dept.lst : Dept.Code(2),Name(10),Head of Dept’s id(4)
+desig.lst: Designation Abbr.(2), Name (9)
+1.	Find the record lengths of each file.
+2.	Display only the date of birth and salary of the last employee record.
+3.	Extract only employee names and designations. (Use column specifications). Save output as cfile1.
+4.	Extract Emp.id, dept, dob and salary. (Use field specifications). Save output as cfile2.
+5.	Fix the files cfile1 and cfile2 laterally, along with the delimiter.
+6.	Sort the emp.lst file in reverse order of Emp. Names.
+7.	Sort the emp.lst file on the salary field, and store the result in file srtf.
+8.	Sort the emp.lst file on designation followed by name.
+9.	Sort the emp.lst file on the year of birth.
+10.	Find out the various designations in the employee file. Eliminate duplicate listing of designations.
+11.	Find the non-repeated designation in the employee file.
+12.	Find the number of employees with various designations in the employee file.
+13.	Create a listing of the years in which employees were born in, along with number of employees born in that year.
+14.	Use nl command to create a code table for designations to include designation code (Start with dept. code 100, and subsequently 105, 110 …).
+
+wc -l emp.lst
+        output : 6 emp.lst
+        wc -l dept.lst
+        output : 2 dept.lst
+	    wc -l desig.lst
+        output : 4 desig.lst
+     2. cat emp.lst|cut -d '|' -f5,6
+     3. cat emp.lst|cut -d '|' -f2,3|cat >cfile1
+     4. cat emp.lst|cut -d '|' -f1,2,4,6|cat >cfile2
+     6. sort -r -k2 emp.lst
+     7. sort -k6 emp.lst >srtf
+     8. sort -k2 -k3 emp.lst
+     9. sort  -t"|" -k5.7 emp.lst
+    10. cut -d"|" -f3 emp.lst >temp |uniq temp
+    11. Same as 23.10
+    12. cut -d"|" -f3 emp.lst |uniq -c
+    13. cut  -c70-75 emp.lst |uniq -c
+    14. cut -d"|" -f4,3 emp.lst|nl
+
+
+
+24:  PCS has its offices at Pune, TTC and Mumbai. The employees’ data is stored separately for each office. Create appropriate files (with same record structure as in previous assignment) and populate with relevant data.  
+
+1.	List details about an employee ‘Manu Sharma’ in the Mumbai office.
+2.	List only the Emp.Id. And Dept. of Manu Sharma.
+3.	List details of all managers in all offices. (O/P should not contain file names.).
+4.	Find the number of S.E. in each office.
+5.	List only the Line Numbers and Employee names of employees in ‘H/W’ in Pune file.
+6.	Obtain a listing of all employees other than those in ‘HR’ in the Mumbai file and save contents in a file ‘nonhr’.
+7.	Find the name and designation of the youngest person who is not a manager.
+8.	Display only the filename(s) in which details of employee by the name ‘Seema Sharma’ can be found.
+9.	Locate the lines containing saxena and saksena in the Mumbai office.
+10.	Find the number of managers who earn between 50000 and 99999 in the Pune office.
+11.	List names of employees whose id is in the range 2000 – 2999: in Pune Office; in all offices.
+12.	Locate people having same month of birth as current month in Pune office.
+13.	List details of all employees other than those of HR and Admin in file F1.
+14.	Locate for all Dwivedi, Trivedi, Chaturvedi in Pune file.
+15.	Obtain a list of people in HR, Admin and Recr. depts. sorted in reverse order of the dept.
+
+    1. grep "Manu Sharma" emp_pcs_pune.dat
+    2. grep "Manu Sharma" emp_pcs_pune.dat | cut -d"," -f1,4
+    3. grep "Manager" emp_pcs_mumbai.dat emp_pcs_ttc.dat emp_pcs_pune.dat
+    4. grep "SSE" emp_pcs_mumbai.dat emp_pcs_ttc.dat emp_pcs_pune.dat -c
+    5. grep "SSE" emp_pcs_pune.dat | nl | cut -d"," -f1,2
+    6. grep -v 'HR' emp_pcs_pune.dat
+    7. grep -v 'HR' emp_pcs_pune.dat emp_pcs_mumbai.dat emp_pcs_ttc.dat| sort -k5 |head -1
+    8. grep 'Seema Sharma' emp_pcs_pune.dat emp_pcs_mumbai.dat emp_pcs_ttc.dat
+    9. fgrep check  emp_pcs_mumbai.dat |nl|cut -f1
+   12. egrep '[1-30]/11/[1900-2999]' emp_pcs_pune.dat
+   13. grep -v 'HR' 'Admin' emp_pcs_pune.dat
+   14. egrep title emp_pcs_pune.dat
+
+
+
+Stretched assignments:
+
+25: Write a command sequence that prints out date information in this order: time, day of week, day number, month, year:
+13:44:42 IST Sun 16 Sept 1994
+
+12:18:45 IST Tue 16 May 2017
+
+
+26: Write a command sequence that prints the names of the files in the current directory in the descending order of number of links
+
+
+	Ls –l | cut f1,9 –d” ”| sort -r
+ 
+
+27: Write a command sequence that prints only names of files in current working directory in alphabetical order
+
+Ls –l |tr –s ‘ ‘|cut –f9 –d” “
+
+
+28:  Write a command sequence to print names and sizes of all the files in current working directory in order of size
+
+
+ls -l|tr -s ' '|cut -d ' ' -f5,9|sort -n
+ 
+
+
+ 29:  Determine the latest file updated by the user
+
+ls -l|tr -s ' '|cut -d ' ' -f6,7,8,9|sort
+ 
+

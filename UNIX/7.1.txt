@@ -1,0 +1,33 @@
+7.1: Using Process-Related Commands
+
+1. Find out the PID of the processes that are activated by you
+   [blr7@NDAUnix ~]$ ps -u
+Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.8/FAQ
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+blr7     17671  0.0  0.0 108472  1892 pts/30   Ss   16:55   0:00 -bash
+blr7     19598  0.0  0.0 110240  1128 pts/30   R+   17:23   0:00 ps -u
+
+
+2. Find out the information about all the processes that are currently active
+   	[blr7@NDAUnix ~]$  ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1175 17671 17670  0  80   0 - 27118 wait   pts/30   00:00:00 bash
+0 R  1175 19951 17671  0  80   0 - 27033 -      pts/30   00:00:00 ps
+
+
+3. Start a different process in the background.  Find out the status of the background process using the PID of the same.
+[blr7@NDAUnix ~]$ vi vaishu &
+[3] 46120
+[blr7@NDAUnix ~]$ ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1175 45710 45709  0  80   0 - 27118 wait   pts/28   00:00:00 bash
+0 T  1175 45917 45710  0  80   0 - 35368 signal pts/28   00:00:00 vim
+0 T  1175 46090 45710  0  80   0 - 35368 signal pts/28   00:00:00 vim
+0 T  1175 46120 45710  0  80   0 - 35368 signal pts/28   00:00:00 vim
+0 R  1175 46126 45710  0  80   0 - 27035 -      pts/28   00:00:00 ps
+
+[3]+  Stopped                 vim vaishu
+[blr7@NDAUnix ~]$ ps -l  46120
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 T  1175 46120 45710  0  80   0 - 35368 signal pts/28     0:00 vim vaishu
+

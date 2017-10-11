@@ -1,0 +1,47 @@
+8.1: Writing awk-Scripts
+
+
+1. Consider the results are stored in following format:
+
+EmpID 	Name 		Subject 	Marks(/50)
+E001		 Nilesh 	Unix 		30
+E002 		 Suresh 	DSA 		20
+Like these you have 10 records ( 5 of DSA and 5 of Unix)
+1)	Display First 5 records.
+[blr7@NDAUnix ~]$ awk 'NR==1,NR==5 {print NR" " $0}' Student
+1 E001 Nilesh Unix 30
+2 E002 Suresh DSA  20
+3 E003 Siva   Unix 40
+4 E004 Rahul  DSA  10
+5 E005 Rajitha Unix 50
+
+
+2) Display Employees who belongs to subject Unix
+[blr7@NDAUnix ~]$ awk '$3=="Unix" {print $0}' Student
+E001 Nilesh Unix 30
+E003 Siva   Unix 40
+E005 Rajitha Unix 50
+E007 Vimal  Unix 35
+E009 Irfan Unix 15
+
+
+3) Display employee names that got less than 30 marks in DSA subject.
+[blr7@NDAUnix ~]$ awk '($4<30) && ($3=="DSA") {print $0}' Student
+E002 Suresh DSA  20
+E004 Rahul  DSA  10
+E008 Vishal DSA  25
+E010 Shiv DSA   5
+
+
+4) Display only even numbered records
+[blr7@NDAUnix ~]$ awk 'NR%2==0 {print NR,$0}' Student
+2 E002 Suresh DSA  20
+4 E004 Rahul  DSA  10
+6 E006 Krish  DSA  45
+8 E008 Vishal DSA  25
+10 E010 Shiv DSA   5
+
+
+5) Display Employee id of records whose name start with N.
+[blr7@NDAUnix ~]$ awk '($2~/^N/){print $1,$2}' Student
+E001 Nilesh

@@ -1,0 +1,320 @@
+
+9.1: Writing Shell-Scripts
+
+
+1.Display the Primary and Secondary prompt. Change the primary prompt to your name: temporarily
+[blr7@NDAUnix ~]$ echo PS1
+PS1
+[blr7@NDAUnix ~]$ PS1="[vaishali]"
+[vaishali]
+
+
+2:  As soon as you login, the prompt should be changed to your name: also the name of the home directory should be automatically displayed.
+[blr7@NDAUnix ~]$ PS1="[vaishali]"
+[vaishali]
+[vaishali] PS1="[\u@\h\w]\\$"
+[blr7@NDAUnix~]$
+
+
+
+3: Check the content of the Environmental variable SHELL.	
+
+[blr7@NDAUnix~]$echo $SHELL
+/bin/bash
+
+
+4: Try the below exercise and check the output.
+Note: Type every line and press enter, do not type the entire code in a vi editor.
+
+$continent=”Africa”
+$echo “$continent”
+	------------? Africa
+$sh
+$echo “$continent”
+	------------? No Response
+$continent=”Asia”
+$echo “$continent”
+	------------? Asia
+            $ctrl + d
+$echo “$continent”
+	------------? Africa
+$sh
+$echo “$continent”
+	------------? No Response
+            $ctrl + d
+
+
+5: Try the below exercise and check the output. (Export variables)
+
+Note: Type every line and press enter, do not type the entire code in a vi editor.
+
+$continent=”Africa”
+export continent
+$echo “$continent”
+	------------? Africa
+$sh
+$echo “$continent”
+	------------? Africa
+$continent=”Asia”
+$echo “$continent”
+	------------? Asia
+$ctrl + d
+$echo “$continent”
+	------------? Africa
+
+
+
+6: Write a shell script that takes the user name as input and reports whether he / she has logged in or not.
+ 
+
+[blr7@NDAUnix~]$vi script1
+[blr7@NDAUnix~]$sh script1
+enter the nameblr7
+blr7
+user is logged in[blr7@NDAUnix~]$
+
+
+7: Write a shell script to display the file name and its contents of all the files that is there in the current directory.
+
+8: Write a shell script, which will take a file name as argument and check whether the file exists and display its access permissions for user.
+	[blr7@NDAUnix~]$vi file
+[blr7@NDAUnix~]$sh file
+enter file name
+vaishu
+grep: echo: No such file or directory
+-rw-rw-r-- 1 blr7 blr7 29 May 16 18:10 vaishu
+grep: filename  exist: No such file or directory
+[blr7@NDAUnix~]$vi file
+[blr7@NDAUnix~]$sh file
+enter file name
+vaishu
+grep: echo: No such file or directory
+grep: filename  exist: No such file or directory
+-rw-rw-r-- 1 blr7 blr7 29 May 16 18:10 vaishu
+[blr7@NDAUnix~]$cat  file
+echo "enter file name"
+read filename
+
+
+ls -l|tr -s ' '|cut -f9 -d" "|grep  -e $filename  echo "filename  exist" | ls -l $filename
+
+
+
+
+9: Pass three numbers as command line arguments and display the largest number in the given three numbers.
+[blr7@NDAUnix~]$vi large
+[blr7@NDAUnix~]$sh large 10 45 25
+enter the num1:10
+enter the num2:45
+enter the num3:25
+largets num:45
+[blr7@NDAUnix~]$cat large
+echo "enter the num1:$1"
+echo "enter the num2:$2"
+echo "enter the num3:$3"
+if [ $1 -gt $2 ] && [ $1 -gt $3 ]
+then
+echo "largest num:$1"
+elif  [ $2 -gt $1 ] && [ $2 -gt $3 ]
+then
+echo "largets num:$2"
+else
+echo "largest num:$3"
+fi
+
+
+
+
+10: Write a shell script which will accept a pattern and a file name. The pattern will be searched in the file provided. Display appropriate messages and perform necessary validations on file.
+[blr7@NDAUnix~]$sh  pattern
+enter the pattern
+sanju
+enter the filename
+vaishu
+file doesnot exist
+
+[blr7@NDAUnix~]$cat pattern
+echo "enter the pattern"
+read pattern
+echo "enter the filename"
+read filename
+grep -e  $pattern $filename && echo "file and pattern exist" || echo "file doesn                                                                                        ot exist"
+
+
+11: To create a menu program for a) creating a file, b) Creating a  directory, c) copying a file, d) moving a file. (use functions)
+a.	If the file exists already give the appropriate message
+b.	If the dir exists already give the appropriate error message
+c.	Source file should exist if not give a message, It should have read permission if not another message, Destination file either there or not, if not there then create it and copy it. If there, then ask whether to overwrite or not, if yes then overwrite it or else give a message file exists already and not overwritten.
+2.	   [blr8@NDAUnix ~]$ cat s11
+3.	f1()
+4.	{
+5.	echo -n Enter the file name to be created:
+6.	read fn
+7.	if [ -f $fn ]
+8.	then
+9.	echo "the file exists"
+10.	else
+11.	cat > $fn
+12.	echo "file created"
+13.	fi
+14.	}
+15.	
+16.	
+17.	f2()
+18.	{
+19.	echo -n "Enter the directory name to be created:"
+20.	read dn
+21.	if [ -d $dn ]
+22.	then
+23.	echo the given directory already exists
+24.	else
+25.	mkdir $dn
+26.	echo "directory created"
+27.	fi
+28.	}
+29.	f3()
+30.	{
+31.	echo enter file names to copy
+32.	echo enter file1:
+33.	read file1
+34.	echo enter file2:
+35.	read file2
+36.	cp $file1 $file2
+37.	echo file is copied
+38.	}
+39.	
+40.	f4()
+41.	{
+42.	
+43.	echo enter file name to movie
+44.	echo enter src:
+45.	read filename
+46.	echo enter dest:
+47.	read des
+48.	cp $filename $des
+49.	echo file is moved
+50.	
+51.	}
+52.	
+53.	echo -n "Select From the below menu:"
+54.	echo "1. Create a File"
+55.	echo "2. Create a Directory"
+56.	echo "3.Copy a File"
+57.	echo "4.Move a File"
+58.	echo -n "Enter your choice:"
+59.	read c
+60.	case $c in 1)f1;;
+61.	           2)f2;;
+62.	           3)f3;;
+63.	           4)f4;;
+64.	esac
+65.
+
+	
+12: Write a function yesno() to display question to user and accept answer as y/n. If answer to the question is y the function should return 0 otherwise 1.
+      Use yesno functions for asking different questions. Question will be passed as   parameter to the function.
+       Accept filename from user check whether it is file or directory. Use yesno() function to display question do you really want to delete file? If the ans is y, then delete the file or directory.
+
+
+13: Write a shell script to store names of four employees and check whether those employees are currently logged in or not. Display appropriate message.
+emp=( "blr7" "blr8" "blr6" "blr9" )
+for i in {0..3}
+do
+who | cut -f1 -d" "|sort|uniq|grep  ${emp[$i]} && echo user logged in: ${emp[$i]} || echo user not logged in: ${emp[$i]}
+done
+
+[blr7@NDAUnix ~]$ sh lab13
+blr7
+user logged in: blr7
+blr8
+user logged in: blr8
+blr6
+user logged in: blr6
+blr9
+user logged in: blr9
+
+
+14: Accept the user's first and last name and the echo the entire name along with some suitable comment.
+[blr7@NDAUnix ~]$ cat lab14
+echo "enter first name"
+read frst
+echo "enter last name"
+read last
+echo $frst $last
+[blr7@NDAUnix ~]$ vi lab14
+[blr7@NDAUnix ~]$ sh lab14
+enter first name
+vais
+enter last name
+jain
+vais jain
+
+
+15: List all files that have been modified today.
+[blr7@NDAUnix ~]$ ls -l|tr -s ' '|cut -f6,7,8,9 -d" " |sort -r| grep "May 17"
+May 17 09:45 lab14
+May 17 09:41 lab13
+May 17 09:23 employer
+May 17 09:12 program
+May 17 08:39 krishna
+May 17 08:38 sindu
+May 17 08:37 sangi
+
+
+
+16: Display long listing of only the regular files in the current directory.
+ 
+17: Display details of all files in the 2 “paths” accepted from user. The display should be screen by screen.
+18: Let the script display its name and its PID.
+ [blr7@NDAUnix ~]$ vi lab18
+[blr7@NDAUnix ~]$ sh lab18
+my script is: lab18
+my PID is : 29110
+[blr7@NDAUnix ~]$ cat lab18
+echo "my script is: $0"
+echo "my PID is : $$"
+
+
+19: Get the concatenated o/p of 2 files into a third file: Take 3 command line arguments: The first argument is the name of a destination file, and the other two arguments are :names of files whose contents are to be placed in the destination file.
+
+
+Stretched Assignments:
+
+20: Write a menu driven shell program to:
+a.   Display calendar of current month
+b.	Search for a pattern in all the files/subdirectories from current directory.  
+c.	Count the no. of directories / sub directories in current directory
+
+
+21: Display day of week for a given date. (ddmmyyyy) 
+           If day is Monday, display message  “Monday Blues”
+                         Friday display message “yeh! It’s week end.”
+           Similarly display different messages for each day of the week. 
+
+22: Display the contents of all .lst files in the current directory.
+
+23: Design a simple calculator, which will add/subtract/multiply/divide 2 numbers.
+eg.   cal 10 20 +   will give o/p as 30.
+[blr7@NDAUnix ~]$ vi sum
+[blr7@NDAUnix ~]$ sh sum 8 4
+enter the num:8
+enter the 2nd name:4
+sum =12
+dif =4
+[blr7@NDAUnix ~]$ cat sum
+echo -n  "enter the num:"
+read num1
+echo -n  "enter the 2nd name:"
+read num2
+echo sum =$(( num1 + num2))
+echo dif =$((num1 - num2))
+echo mul =$(( num1 \* num2))
+echo div =$((num1 / num2))
+
+
+
+24: For a student file with the following fields, rollno, name, marks, Generate 2 files ‘Pass’ and ‘Fail’ containing records of student who have passed or failed. Also count the number of students who have passed or failed.
+
+25: Accept a date string from terminal and display employees born after the input date. 
+
+

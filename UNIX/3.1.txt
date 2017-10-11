@@ -1,0 +1,46 @@
+
+3.1:  Viewing the File System and Granting/Removing Permissions
+        (Note: Create required files if doesn’t exists.)
+
+1.   Give the execute permission for the user for a file chap1
+	[blr7@NDAUnix ~]$ ls -l chap1
+	-rwxrw-r-- 1 blr7 blr7 5 May 12 16:30 chap1
+
+2.   Give the execute permission for user, group and others for a file add.c
+	[blr7@NDAUnix ~]$ ls -l chap1
+	-rwxrwxr-x 1 blr7 blr7 5 May 12 16:30 chap1
+
+3.    Remove the execute permission from user, give read permission to group and others for a file aa.c
+	chmod u-x g+r o+r aa.c
+ 	ls -l aa.c
+	-rw-rw-r-- 1 blr7 blr7 10 May 13 09:58 aa.c
+
+4.    Give execute permission for users for a.c, kk.c, nato and myfile using single command
+      chmod u+x a.c kk.c nato myfile
+
+5.    Change the directory to root directory. Check the system directories, like bin, etc, usr etc
+      cd /
+
+      Ls –l /etc
+
+      Ls –l /
+[blr7@NDAUnix /]$ ls -l /usr
+total 208
+dr-xr-xr-x.   2 root root 69632 Apr 10 11:50 bin
+drwxr-xr-x.   2 root root  4096 Jun 28  2011 etc
+drwxr-xr-x.   2 root root  4096 Jun 28  2011 games
+drwxr-xr-x. 144 root root 12288 Jan 15  2014 include
+dr-xr-xr-x.  31 root root  4096 Jan 15  2014 lib
+dr-xr-xr-x. 123 root root 69632 Apr 10 11:50 lib64
+drwxr-xr-x.  28 root root 12288 Jan 15  2014 libexec
+drwxr-xr-x.  12 root root  4096 Jan 15  2014 local
+dr-xr-xr-x.   2 root root 16384 Apr 10 11:31 sbin
+drwxr-xr-x. 222 root root  4096 Jan 15  2014 share
+drwxr-xr-x.   4 root root  4096 Jan 15  2014 src
+lrwxrwxrwx.   1 root root    10 Jan 15  2014 tmp -> ../var/tmp
+[blr7@NDAUnix /]$
+
+
+
+
+

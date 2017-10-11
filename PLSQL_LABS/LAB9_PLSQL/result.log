@@ -1,0 +1,29 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Sat Jun 10 10:38:35 2017
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   D:\bkarutur\sql_plsql\PLSQL_LABS\LAB9_PLSQL\loader.ctl
+Data File:      D:\bkarutur\sql_plsql\PLSQL_LABS\LAB9_PLSQL\MYDATA9_1.CSV
+  Bad File:     D:\bkarutur\sql_plsql\PLSQL_LABS\LAB9_PLSQL\MYDATA9_1.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table DEPT_COPY, loaded from every logical record.
+Insert option in effect for this table: INSERT
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+DEPTNO                              FIRST     *   ,  O(") CHARACTER            
+DNAME                                NEXT     *   ,  O(") CHARACTER            
+LOC                                  NEXT     *   ,  O(") CHARACTER            
+
+SQL*Loader-601: For INSERT option, table must be empty.  Error on table DEPT_COPY
