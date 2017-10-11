@@ -1,0 +1,273 @@
+<%@ taglib uri="/WEB-INF/lib/reports_tld.jar" prefix="rw" %> 
+<%@ page language="java" import="java.io.*" errorPage="/rwerror.jsp" session="false" %>
+<%@ page contentType="text/html;charset=ISO-8859-1" %>
+<!--
+<rw:report id="report"> 
+<rw:objects id="objects">
+<?xml version="1.0" encoding="WINDOWS-1252" ?>
+<report name="4" DTDVersion="9.0.2.0.10">
+  <xmlSettings xmlTag="MODULE7" xmlPrologType="text">
+  <![CDATA[<?xml version="1.0" encoding="&Encoding"?>]]>
+  </xmlSettings>
+  <data>
+    <dataSource name="Q_1">
+      <select>
+      <![CDATA[select empno,ename,sal,comm from emp
+]]>
+      </select>
+      <displayInfo x="1.51038" y="0.92712" width="2.07300" height="0.58325"/>
+      <group name="G_empno">
+        <displayInfo x="1.99683" y="2.01038" width="1.09998" height="1.79785"
+        />
+        <dataItem name="empno" oracleDatatype="number" columnOrder="11"
+         width="22" defaultWidth="60000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Empno">
+          <dataDescriptor expression="empno" descriptiveExpression="EMPNO"
+           order="1" width="22" precision="4"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="ename" datatype="vchar2" columnOrder="12"
+         defaultWidth="100000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Ename">
+          <dataDescriptor expression="ename" descriptiveExpression="ENAME"
+           order="2" width="10"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="sal" oracleDatatype="number" columnOrder="13"
+         width="22" defaultWidth="90000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Sal" valueIfNull="0">
+          <dataDescriptor expression="sal" descriptiveExpression="SAL"
+           order="3" width="22" scale="2" precision="7"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="comm" oracleDatatype="number" columnOrder="14"
+         width="22" defaultWidth="90000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Comm" valueIfNull="0">
+          <dataDescriptor expression="comm" descriptiveExpression="COMM"
+           order="4" width="22" scale="2" precision="7"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <formula name="total_salary" source="total_salaryformula"
+         datatype="number" width="20" precision="10" defaultWidth="0"
+         defaultHeight="0" columnFlags="16" valueIfNull="0" breakOrder="none">
+          <displayInfo x="0.00000" y="0.00000" width="0.00000"
+           height="0.00000"/>
+        </formula>
+      </group>
+    </dataSource>
+    <summary name="Grand_total" source="total_salary" function="sum"
+     width="20" precision="10" reset="page" compute="report" defaultWidth="0"
+     defaultHeight="0" columnFlags="8" defaultLabel="Grand Total"
+     valueIfNull="0">
+      <displayInfo x="1.86462" y="4.27087" width="1.30200" height="0.21875"/>
+    </summary>
+    <summary name="Grand_sal" source="sal" function="sum" width="20"
+     precision="10" reset="page" compute="report" defaultWidth="0"
+     defaultHeight="0" columnFlags="8" defaultLabel="Grand Sal"
+     valueIfNull="0">
+      <displayInfo x="1.88538" y="3.90625" width="1.25000" height="0.23962"/>
+    </summary>
+  </data>
+  <layout>
+  <section name="main">
+    <body>
+      <frame name="M_1">
+        <geometryInfo x="0.12500" y="0.25000" width="5.50000" height="0.31250"
+        />
+        <text name="B_1" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="0.18750" y="0.31250" width="0.61462"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[empno]]>
+            </string>
+          </textSegment>
+        </text>
+        <text name="B_2" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="0.81250" y="0.31250" width="1.26038"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[employee_name]]>
+            </string>
+          </textSegment>
+        </text>
+        <text name="B_3" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="2.25000" y="0.31250" width="0.78125"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[salary]]>
+            </string>
+          </textSegment>
+        </text>
+        <text name="B_4" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="3.18750" y="0.31250" width="1.04163"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[commission]]>
+            </string>
+          </textSegment>
+        </text>
+        <text name="B_5" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="4.37500" y="0.31250" width="1.06250"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[total_salary]]>
+            </string>
+          </textSegment>
+        </text>
+      </frame>
+      <repeatingFrame name="R_1" source="G_empno" printDirection="down"
+       minWidowRecords="1" columnMode="no">
+        <geometryInfo x="0.12500" y="0.62500" width="5.50000" height="0.31250"
+        />
+        <generalLayout verticalElasticity="expand"
+         horizontalElasticity="expand"/>
+        <field name="F_1" source="empno" minWidowLines="1" spacing="single"
+         alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="0.18750" y="0.68750" width="0.56250"
+           height="0.18750"/>
+          <generalLayout verticalElasticity="expand"
+           horizontalElasticity="expand"/>
+        </field>
+        <field name="F_2" source="ename" minWidowLines="1" spacing="single"
+         alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="0.81250" y="0.68750" width="1.25000"
+           height="0.18750"/>
+          <generalLayout verticalElasticity="expand"
+           horizontalElasticity="expand"/>
+        </field>
+        <field name="F_3" source="sal" minWidowLines="1" spacing="single"
+         alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="2.18750" y="0.68750" width="0.93750"
+           height="0.18750"/>
+          <generalLayout verticalElasticity="expand"
+           horizontalElasticity="expand"/>
+        </field>
+        <field name="F_4" source="comm" minWidowLines="1" spacing="single"
+         alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="3.25000" y="0.68750" width="0.93750"
+           height="0.18750"/>
+          <generalLayout verticalElasticity="expand"
+           horizontalElasticity="expand"/>
+        </field>
+        <field name="F_5" source="total_salary" minWidowLines="1"
+         spacing="single" alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="4.31250" y="0.68750" width="1.18750"
+           height="0.18750"/>
+          <generalLayout verticalElasticity="expand"
+           horizontalElasticity="expand"/>
+        </field>
+      </repeatingFrame>
+      <frame name="M_2">
+        <geometryInfo x="0.12500" y="1.00000" width="5.50000" height="0.31250"
+        />
+        <text name="B_6" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="0.18750" y="1.06250" width="0.70837"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[Grand]]>
+            </string>
+          </textSegment>
+        </text>
+        <field name="F_6" source="Grand_sal" minWidowLines="1"
+         spacing="single" alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"
+           textColor="r25g75b88"/>
+          <geometryInfo x="1.06250" y="1.06250" width="1.18750"
+           height="0.18750"/>
+        </field>
+        <text name="B_7" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="2.56250" y="1.06250" width="0.95837"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[Grand total]]>
+            </string>
+          </textSegment>
+        </text>
+        <field name="F_7" source="Grand_total" minWidowLines="1"
+         spacing="single" alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="3.75000" y="1.06250" width="1.31250"
+           height="0.18750"/>
+        </field>
+      </frame>
+    </body>
+  </section>
+  </layout>
+  <programUnits>
+    <function name="total_salaryformula" returnType="number">
+      <textSource>
+      <![CDATA[function total_salaryFormula return Number is
+begin
+  return (:sal + :comm);
+end;]]>
+      </textSource>
+    </function>
+  </programUnits>
+  <reportPrivate versionFlags2="0" templateName="rwbeige"/>
+  <reportWebSettings>
+  <![CDATA[]]>
+  </reportWebSettings>
+</report>
+</rw:objects>
+-->
+
+<html>
+
+<head>
+<meta name="GENERATOR" content="Oracle 9i Reports Developer"/>
+<title> Your Title </title>
+
+<rw:style id="yourStyle">
+   <!-- Report Wizard inserts style link clause here -->
+</rw:style>
+
+</head>
+
+
+<body>
+
+<rw:dataArea id="yourDataArea">
+   <!-- Report Wizard inserts the default jsp here -->
+</rw:dataArea>
+
+
+
+</body>
+</html>
+
+<!--
+</rw:report> 
+-->

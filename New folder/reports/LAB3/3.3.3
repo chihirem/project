@@ -1,0 +1,196 @@
+<%@ taglib uri="/WEB-INF/lib/reports_tld.jar" prefix="rw" %> 
+<%@ page language="java" import="java.io.*" errorPage="/rwerror.jsp" session="false" %>
+<%@ page contentType="text/html;charset=ISO-8859-1" %>
+<!--
+<rw:report id="report"> 
+<rw:objects id="objects">
+<?xml version="1.0" encoding="WINDOWS-1252" ?>
+<report name="3" DTDVersion="9.0.2.0.10">
+  <xmlSettings xmlTag="MODULE4" xmlPrologType="text">
+  <![CDATA[<?xml version="1.0" encoding="&Encoding"?>]]>
+  </xmlSettings>
+  <data>
+    <userParameter name="SALARY" datatype="character" width="40"
+     defaultWidth="0" defaultHeight="0"/>
+    <dataSource name="Q_1">
+      <select>
+      <![CDATA[SELECT ALL EMP.EMPNO, EMP.ENAME, 
+EMP.JOB, EMP.MGR, EMP.HIREDATE, EMP.SAL, EMP.COMM, EMP.DEPTNO
+FROM SCOTT.EMP &salary]]>
+      </select>
+      <displayInfo x="1.09375" y="1.01038" width="2.01038" height="0.92712"/>
+      <group name="G_EMPNO">
+        <displayInfo x="1.48962" y="3.56250" width="1.40918" height="2.13965"
+        />
+        <dataItem name="JOB" datatype="vchar2" columnOrder="15" width="9"
+         defaultWidth="90000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Job">
+          <dataDescriptor expression="EMP.JOB" descriptiveExpression="JOB"
+           order="3" width="9"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="MGR" oracleDatatype="number" columnOrder="16"
+         width="22" defaultWidth="60000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Mgr">
+          <dataDescriptor expression="EMP.MGR" descriptiveExpression="MGR"
+           order="4" width="22" precision="4"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="HIREDATE" datatype="date" oracleDatatype="date"
+         columnOrder="17" width="9" defaultWidth="90000" defaultHeight="10000"
+         columnFlags="1" defaultLabel="Hiredate">
+          <dataDescriptor expression="EMP.HIREDATE"
+           descriptiveExpression="HIREDATE" order="5" width="9"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="COMM" oracleDatatype="number" columnOrder="18"
+         width="22" defaultWidth="90000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Comm">
+          <dataDescriptor expression="EMP.COMM" descriptiveExpression="COMM"
+           order="7" width="22" scale="2" precision="7"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="DEPTNO" oracleDatatype="number" columnOrder="19"
+         width="22" defaultWidth="40000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Deptno">
+          <dataDescriptor expression="EMP.DEPTNO"
+           descriptiveExpression="DEPTNO" order="8" width="22" precision="2"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="EMPNO" oracleDatatype="number" columnOrder="12"
+         width="22" defaultWidth="60000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Empno">
+          <dataDescriptor expression="EMP.EMPNO" descriptiveExpression="EMPNO"
+           order="1" oracleDatatype="number" width="22" precision="4"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="ENAME" datatype="vchar2" columnOrder="13"
+         defaultWidth="100000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Ename">
+          <dataDescriptor expression="EMP.ENAME" descriptiveExpression="ENAME"
+           order="2" width="10"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+        <dataItem name="SAL" oracleDatatype="number" columnOrder="14"
+         width="22" defaultWidth="90000" defaultHeight="10000" columnFlags="1"
+         defaultLabel="Sal">
+          <dataDescriptor expression="EMP.SAL" descriptiveExpression="SAL"
+           order="6" oracleDatatype="number" width="22" scale="2"
+           precision="7"/>
+          <dataItemPrivate adtName="" schemaName=""/>
+        </dataItem>
+      </group>
+    </dataSource>
+  </data>
+  <layout>
+  <section name="main">
+    <body>
+      <frame name="M_1">
+        <geometryInfo x="0.18750" y="0.18750" width="3.50000" height="0.31250"
+        />
+        <text name="B_1" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="0.31250" y="0.25000" width="0.68750"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[EMPNO]]>
+            </string>
+          </textSegment>
+        </text>
+        <text name="B_2" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="1.18750" y="0.25000" width="1.29163"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[EMPLOYEE NAME]]>
+            </string>
+          </textSegment>
+        </text>
+        <text name="B_3" minWidowLines="1">
+          <textSettings justify="center" spacing="single"/>
+          <geometryInfo x="2.68750" y="0.25000" width="0.71875"
+           height="0.16663"/>
+          <textSegment>
+            <font face="Courier New" size="10" bold="yes" italic="yes"
+             underline="yes"/>
+            <string>
+            <![CDATA[SALARY]]>
+            </string>
+          </textSegment>
+        </text>
+      </frame>
+      <repeatingFrame name="R_1" source="G_EMPNO" printDirection="down"
+       minWidowRecords="1" columnMode="no">
+        <geometryInfo x="0.18750" y="0.56250" width="3.50000" height="0.31250"
+        />
+        <generalLayout verticalElasticity="expand"
+         horizontalElasticity="expand"/>
+        <field name="F_1" source="EMPNO" minWidowLines="1" spacing="single"
+         alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="0.25000" y="0.62500" width="0.68750"
+           height="0.18750"/>
+          <generalLayout verticalElasticity="expand"
+           horizontalElasticity="expand"/>
+        </field>
+        <field name="F_2" source="ENAME" minWidowLines="1" spacing="single"
+         alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="1.18750" y="0.62500" width="1.37500"
+           height="0.18750"/>
+          <generalLayout verticalElasticity="expand"
+           horizontalElasticity="expand"/>
+        </field>
+        <field name="F_3" source="SAL" minWidowLines="1" spacing="single"
+         alignment="center">
+          <font face="Courier New" size="10" bold="yes" italic="yes"/>
+          <geometryInfo x="2.75000" y="0.62500" width="0.81250"
+           height="0.18750"/>
+          <generalLayout verticalElasticity="expand"
+           horizontalElasticity="expand"/>
+        </field>
+      </repeatingFrame>
+    </body>
+  </section>
+  </layout>
+  <reportPrivate versionFlags2="0" templateName="rwbeige"/>
+  <reportWebSettings>
+  <![CDATA[]]>
+  </reportWebSettings>
+</report>
+</rw:objects>
+-->
+
+<html>
+
+<head>
+<meta name="GENERATOR" content="Oracle 9i Reports Developer"/>
+<title> Your Title </title>
+
+<rw:style id="yourStyle">
+   <!-- Report Wizard inserts style link clause here -->
+</rw:style>
+
+</head>
+
+
+<body>
+
+<rw:dataArea id="yourDataArea">
+   <!-- Report Wizard inserts the default jsp here -->
+</rw:dataArea>
+
+
+
+</body>
+</html>
+
+<!--
+</rw:report> 
+-->
