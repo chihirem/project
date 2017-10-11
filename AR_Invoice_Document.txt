@@ -1,0 +1,145 @@
+Table Creation:
+
+SQL Statements-->	CREATE TABLE AR_INVOICE_TBL(INVOICE_NUMBER NUMBER,
+						INVOICE_DATE DATE,
+						CUSTOMER_NAME VARCHAR2(25),
+						CUSTOMER_BILL_TO VARCHAR2(100),
+						CUSTOMER_SHIP_TO VARCHAR2(100),
+						INVOICE_CURRENCY VARCHAR2(15),
+						INVOICE_AMOUNT NUMBER,
+						INVOICE_LINE_NUMBER NUMBER,
+						ITEM_NUMBER NUMBER,
+						ITEM_DESCRIPTION VARCHAR2(100),
+						TAX_CODE NUMBER,
+						TAX_AMOUNT NUMBER,
+						);
+
+
+-->			INSERT INTO AR_INVOICE_TBL VALUES(&INVOICE_NUMBER,&INVOICE_DATE,'&CUSTOMER_NAME','&CUSTOMER_BILL_TO',
+							 '&CUSTOMER_SHIP_TO','&INVOICE_CURRENCY',&INVOICE_AMOUNT,&INVOICE_LINE_NUMBER,
+							  &ITEM_NUMBER,'&ITEM_DESCRIPTION',&TAX_CODE,&TAX_AMOUNT);
+
+
+
+Report Creation:
+
+Creating a report manually :
+
+DATA MODEL: 
+
+1. Start Oracle Reports by clicking the Reports Builder icon on your desktop. The welcome screen displays. Select the option Build a new report manually. Click OK.
+
+2. If Reports Builder is already open, create a new report by selecting File > New > Report  from the menu. 
+
+    In both cases, the Data Model view of the Report Editor displays. 
+
+3. Add a query to the data model by selecting Insert > Query  from the menu. This action invokes the Data Wizard. 
+
+4. For the data source, accept SQL Query  as the data source type by clicking Next. 
+
+    SQL Query:
+
+    SELECT INVOICE_NUMBER,INVOICE_DATE,CUSTOMER_NAME,CUSTOMER_BILL_TO,CUSTOMER_SHIP_TO,
+
+    INVOICE_CURRENCY,INVOICE_AMOUNT,INVOICE_LINE_NUMBER,ITEM_NUMBER,ITEM_DESCRIPTION,
+
+    TAX_CODE,TAX_AMOUNT FROM AR_INVOICE_TBL WHERE CUSTOMER_NAME:=OU_NAME;
+
+
+5. On the data source definition page, click 'Connect' to connect to the database. 
+
+In the Connect dialog box, enter appsread for the User Name, appsread for the Password, and the name of your database for the Database field.
+
+6. Fetch the appropriate table from the database.
+
+PAPER LAYOUT:
+
+
+1. Once your data model is complete, you need to create a layout for the data objects to display in the report output.
+
+2. Design the report based on the user requirement and save the report(XX3_AR_INVOICE_REPORT.rdf).
+
+WINSCP:
+
+1. Go to winscp, copy the file from the local machine to server and save the report in the path(dbfiles/applcsf/cust/us/reports)
+
+ORACLE APPLICATION:
+
+1. Create Executable: Link it to Report file(.rdf) created
+
+Navigation: Login into Oracle Applications –> Go to Application Developer Responsibility –> Concurrent –> Executable
+
+	Executable	   :XX3_AR_INVOICE_EX
+
+	Short name	   :XX3_AR_INVOICE_EX
+
+	Application	   :
+
+	Execution method   :ORACLE REPORTS
+
+	Execution file name:XX3_AR_INVOICE_REPORT
+
+2. To create a value set: 
+
+Navigation: Log in to Oracle with the Application Developer responsibility -> Application -> Validation -> Set, the Values Sets window will open.
+
+We need to enter:
+
+	Value Set Name	   :AR_VALUESET
+
+	Description        :
+
+	List Type          :List of Values
+
+	Security Type      :No Security
+
+	Format Type        :Char
+
+	Maximum Size       :20
+
+	Validation Type    :Table
+
+3. After Developing a report to register as a concurrent program.
+
+Navigation: Application Developer –> Concurrent –> Program
+
+	Program		   :AR_INVOICE_REPORT_PGM
+
+	Short name	   :AR_INVOICE_REPORT_PGM
+
+	Application	   :
+
+Click on Parameters then enter the following details:
+
+	Program		   :AR_INVOICE_REPORT_PGM
+
+	Application	   :
+
+	Sequence No 	   :1
+
+	Parameter	   :OU_NAME
+
+	Valueset	   :AR_VALUESET
+
+	Default type	   :constant
+
+	Token	           :OU_NAME
+
+
+4. Create Concurrent Program: Link to it executable defined in previous step
+
+5. Enter Parameters and link Value Sets
+
+6. Assign the registered Concurrent Program to a request group
+
+Navigation: Switch to “System Administrator” Responsibility –> Security –> Responsibility –> Request
+
+Action: Enter Your User Readable Name of your concurrent program
+
+Action: Save
+
+Now Your Concurrent Program is ready to run.
+
+Switch to appropriate responsibility and run the concurrent program.
+
+							   

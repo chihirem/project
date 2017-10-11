@@ -1,0 +1,31 @@
+BEGIN
+    DECLARE user_id AS INTEGER
+    DECLARE user_name AS STRING
+    DECLARE l_m_r AS FLOAT
+    DECLARE c_m_r AS FLOAT
+    DECLARE unit_consumed AS FLOAT
+    DECLARE net_amount AS FLOAT
+    DECLARE CONSTANT fixed_charge=100
+    PROMPT "Enter the user id"
+    ACCEPT user_id
+    PROMPT "Enter the user name"
+    ACCEPT user_name
+    PROMPT "Enter the last month meter reading"
+    ACCEPT l_m_r
+    PROMPT "Enter the current month meter reading"
+    ACCEPT c_m_r
+    unit_consumed=(l_m_r)-(c_m_r)
+    IF unit_consumed<=100
+       net_amount=unit_consumed*3.35+fixed_charge
+    ELSE IF unit_consumed<=200
+       net_amount=unit_consumed*3.35+unit_consumed*4.48+fixed_charge
+    ELSE IF unit_consumed>200
+       net_amount=unit_consumed*3.35+unit_consumed*4.48+(unit_consumed-200)*5.95+fixed_charge
+    ENDIF
+    ENDIF
+    ENDIF
+    PRINT "User ID:",user_id
+    PRINT "User Name:",user_name
+    PRINT "Unit Consumed:",unit_consumed
+    PRINT "Net Amount:",net_amount
+END  

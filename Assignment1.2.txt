@@ -1,0 +1,16 @@
+BEGIN 
+    DECLARE y_o_e AS INTEGER
+    INITIALIZE y_o_e=0
+    PROMPT "Enter the year of experience"
+    ACCEPT y_o_e
+    IF y_o_e=0 && y_o_e<3 THEN
+       PRINT "blue"
+    ELSEIF y_o_e=3 && y_o_e<5 THEN
+       PRINT "grey"
+    ELSEIF y_o_e=5 && y_o_e<10 THEN
+       PRINT "yellow"
+    ELSE 
+       PRINT "red"
+    ENDIF
+END
+

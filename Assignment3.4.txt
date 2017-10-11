@@ -1,0 +1,28 @@
+ALGORITHM Sum(n)
+ //Input: A nonnegative integer n
+  sum->0
+  for index->1 to n do
+  sum->sum+index
+  return sum
+
+
+Input: Enter the number   3
+
+sum=0
+
+for index=1 to 3
+
+sum=0+1=1
+
+for index=2 to 3
+
+sum=1+2=3
+
+for index=3 to 3
+
+sum=3+3=6
+
+return 3
+
+
+Output:3

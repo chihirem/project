@@ -1,0 +1,32 @@
+/*******************************************************************
+* File                 : Assignment2.1.1.txt
+* Author Name          : Chitra
+* Description          : Program to print the electricity bill
+* Version              : 2.1.1
+* Last Modified Date   : 23-May-2017
+* Change Description   : Added header
+********************************************************************/
+
+BEGIN
+    DECLARE user_id AS INTEGER
+    DECLARE user_name AS STRING
+    DECLARE l_m_r AS FLOAT
+    DECLARE c_m_r AS FLOAT
+    DECLARE unit_consumed AS FLOAT
+    DECLARE net_amount AS FLOAT
+    DECLARE CONSTANT fixed_charge=100
+    PROMPT "Enter the user id"
+    ACCEPT user_id
+    PROMPT "Enter the user name"
+    ACCEPT user_name
+    PROMPT "Enter the last month meter reading"
+    ACCEPT l_m_r
+    PROMPT "Enter the current month meter reading"
+    ACCEPT c_m_r
+    unit_consumed=(l_m_r)-(c_m_r)
+    net_amount=unit_consumed*1.15+fixed_charge
+    PRINT "User ID:",user_id
+    PRINT "User Name:",user_name
+    PRINT "Unit Consumed:",unit_consumed
+    PRINT "Net Amount:",net_amount
+END  

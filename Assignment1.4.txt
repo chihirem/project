@@ -1,0 +1,15 @@
+BEGIN 
+    DECLARE num AS INTEGER
+    DECLARE sum,n AS INTEGER
+    INITIALIZE sum TO 0
+    INITIALIZE num=n
+    WHILE num!=0
+          sum=(num%10) POW 3+sum
+          num=num/10
+    END WHILE
+    IF sum==n THEN
+        PRINT "armstrong number"
+    ELSE
+        PRINT "not armstrong number"
+    ENDIF
+END

@@ -1,0 +1,63 @@
+/*********************************************************************
+ * File                 : 3.5
+ * Author Name          : Chitra
+ * Description          : Program to find the occurence of character in a word 
+ * Version              : 1.0
+ * Date 	        : 25-05-2017
+*********************************************************************/
+
+
+BEGIN
+	DECLARE word AS STRING
+	DECLARE char AS CHARACTER
+	DECLARE count AS INTEGER
+	word=inputdata()
+	char=inputchar()
+	count=search(word,char)
+	PRINT "The number of occurence of"+ char +" in "+word+ "is "+count
+END
+
+/*********************************************************************
+* Module Name         : inputdata()
+* Return Type         : STRING
+* Author              : Chitra
+*  Date       	      : 25-05-2017
+*********************************************************************/
+
+
+SUB inputdata()
+	DECLARE word AS STRING
+	PROMPT "Enter the Word" AND STORE IN word
+	RETURN word
+SUB END
+
+/*********************************************************************
+* Module Name         : inputchar()
+* Return Type         : CHARACTER
+* Author              : Chitra
+*  Date       	      : 25-05-2017
+*********************************************************************/
+
+SUB inputchar()
+	DECLARE char AS CHARACTER
+	PROMPT "Enter a character" AND STORE IN char
+	RETURN char
+SUB END
+
+/*********************************************************************
+* Module Name         : search(word,char)
+* Input Parameters    : word,char
+* Return Type         : INTEGER
+* Author              : Chitra
+*  Date       	      : 25-05-2017
+*********************************************************************/
+	
+SUB search(word,char)
+	DECLARE index AS INTEGER
+	FOR index=0 TO word(LENGTH)-1
+		IF(word(CHARACTER AT index)==char) THEN
+			count=count+1
+		END IF
+	END FOR
+	RETURN count
+END SUB

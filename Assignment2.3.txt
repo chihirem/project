@@ -1,0 +1,44 @@
+/*******************************************************************
+* File                 : Assignment2.3.txt
+* Author Name          : Chitra
+* Description          : Program to accept an array with 10 numbers and return
+                         number of unique values in an array
+* Version              : 2.3
+* Last Modified Date   : 23-May-2017
+* Change Description   : No Change
+********************************************************************/
+
+BEGIN
+    DECLARE numArray[10] AS INTEGER ARRAY
+    PROMPT "Enter the number"
+    FOR index=0 TO 9
+    ACCEPT numArray[index]
+    END FOR
+END
+
+/*********************************************************************
+* Module Name         : uniquecount()
+* Input Parameters    : numArray[index]
+* Return Type         : INTEGER
+* Author              : Chitra
+* Creation Date       : 23-May-2017
+* Description         : Return number of unique values in an array
+*********************************************************************/
+
+SUB uniquecount(numArray[index])
+    DECLARE index,index1,found
+    INITIALIZE found=false
+
+    FOR index=0 TO 9
+        FOR index1=0 TO 9
+            IF(numArray[index]==numArray[index1])
+                found=true
+            END IF
+        END FOR
+        IF(!found)
+           BREAK
+        
+    END FOR
+unique=unique+1
+
+      

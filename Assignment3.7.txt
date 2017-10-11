@@ -1,0 +1,70 @@
+/*********************************************************************
+ * File                 : 3.7
+ * Author Name          : Chitra
+ * Description          : Program on substring
+ * Version              : 1.0
+ * Date 	        : 25-05-2017
+*********************************************************************/
+
+BEGIN
+	DECLARE string,string1,substr AS STRING
+	DECLARE count AS INTEGER
+	string=inputstr()
+	string1=inputstr()
+	substr=substring(string,string1)
+	IF substr==string1
+		PRINT "It is Substring"
+	ELSE
+		PRINT "It is not substring"
+	END IF
+
+EXCEPTION
+	WHEN NoInput THEN
+		PRINT errormessage //Errormessage returned from exception
+END
+
+/*********************************************************************
+* Module Name         : inputstr()
+* Return Type         : string
+* Author              : Chitra
+*  Date       	      : 25-05-2017
+*********************************************************************/
+
+SUB inputstr()
+	DECLARE string,str AS STRING
+	PROMPT "Enter the string"
+	ACCEPT str
+	IF str !="NULL"
+		string=str
+	ELSE
+		RAISE NoInput("NO input is provided")
+	END IF
+END SUB
+
+
+/*********************************************************************
+* Module Name         : substring()
+* Return Type         : string
+* Author              : Chitra
+* Date       	      : 25-05-2017
+*********************************************************************/
+
+SUB substring(string,string1)
+		DECLARE length,count,index,i AS INTEGER
+		DECLARE str AS STRING
+		length=string1(LENGTH)
+		INITIALIZE i=0
+		FOR index= 0 TO string(LENGTH)
+			IF string(CHARACTER AT index)==string1(CHARACTER AT i) AND i<=length
+				i=i+1
+				count=count+1
+			END IF
+		END FOR
+		IF(count==length)
+			str=string1
+		ELSE
+			str=string
+		END IF
+		RETURN str
+END SUB
+

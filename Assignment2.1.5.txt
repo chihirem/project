@@ -1,0 +1,22 @@
+/*******************************************************************
+* File                 : Assignment2.1.5.txt
+* Author Name          : Chitra
+* Description          : Program to convert a binary number to decimal
+* Version              : 2.1.5
+* Last Modified Date   : 23-May-2017
+* Change Description   : Added header
+********************************************************************/
+
+BEGIN
+	DECLARE num,dec,rem,count AS INTEGER
+	INITIALIZE dec=0,count=0,rem=0
+	PROMPT "Enter the number"
+	WHILE(num<0)
+		rem=num%10
+		dec=dec+(rem*2^count)
+		num=num/10
+		count=count+1
+	END WHILE
+	PRINT "The decimal value is",dec
+END
+	

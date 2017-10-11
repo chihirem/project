@@ -1,0 +1,27 @@
+/*******************************************************************
+* File                 : Assignment2.1.3.txt
+* Author Name          : Chitra
+* Description          : Program to print the following mathematical series.
+			 0 1 1 2 3 5 8 13 21 …. N.
+* Version              : 2.1.3
+* Last Modified Date   : 23-May-2017
+* Change Description   : Added header
+********************************************************************/
+
+BEGIN 
+    DECLARE limit,num,num1,num2,index AS INTEGER
+    INITIALIZE num=0,num1=1
+    PROMPT "Enter the limit"
+    ACCEPT limit
+    FOR index=0 TO limit
+       IF index<=1 THEN
+          num2=index
+       ELSE
+          num2=num+num1
+          num=num1
+          num1=num2
+       PRINT num2
+       ENDIF
+       limit=limit+1
+       END FOR
+END

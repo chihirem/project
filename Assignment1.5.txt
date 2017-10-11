@@ -1,0 +1,13 @@
+BEGIN
+	DECLARE num,dec,rem,count AS INTEGER
+	INITIALIZE dec=0,count=0,rem=0
+	PROMPT "Enter the number"
+	WHILE(num<0)
+		rem=num%10
+		dec=dec+(rem*2^count)
+		num=num/10
+		count=count+1
+	END WHILE
+	PRINT "The decimal value is",dec
+END
+	

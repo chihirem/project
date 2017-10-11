@@ -1,0 +1,52 @@
+/*********************************************************************
+ * File                 : 4.2
+ * Author Name          : Chitra
+ * Description          : Program to check leaves 
+ * Version              : 1.0
+ * Date 	        : 25-05-2017
+*********************************************************************/
+
+RECORD Employee
+	DECLARE EmpId as INTEGER
+	DECLARE employmentType AS STRING
+END RECORD
+
+
+BEGIN
+	DECLARE emp[5] AS Employee
+	DECLARE leaves, TotalLeaves, index AS INTEGER
+
+	// inputs
+	FOR index= 0 to 4
+		PROMPT "Enter the EmployeeId" AND STORE IN emp[index].EmpId
+		PROMPT "Enter the employmentType" AND STORE IN emp[index].employmentType
+	END FOR
+	TotalLeaves=leave(emp,employmentType)
+	
+	// outputs
+		PRINT "Employee Id :" , emp[index].EmpId
+		PRINT "Total Available Leaves are :", TotalLeaves
+	END FOR
+
+END
+
+/*********************************************************************
+* Module Name         : leave(emp,employmentType)
+* Input Parameters    : TotalLeaves
+* Return Type         : INTEGER
+* Author              : Chitra
+*  Date       	      : 25-05-2017
+*********************************************************************/
+
+SUB leave(emp,employmentType)
+	DECLARE index,leaves,TotalLeaves AS INTEGER
+	FOR index= 0 to 4
+		IF(emp[index].employmentType=="PERMANENT") THEN
+			leaves=2
+			TotalLeaves=leaves*12
+		ELSE IF(emp[index].employmentType=="CONTRACT") THEN
+			leaves=1
+			TotalLeaves=leaves*12
+		END IF	
+	RETURN TotalLeaves
+END SUB

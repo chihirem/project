@@ -1,0 +1,75 @@
+/*******************************************************************
+* File                 : Assignment1.1R2.txt
+* Author Name          : Chitra
+* Description          : Program to print the electricity bill
+* Version              : 1.1R2
+* Last Modified Date   : 23-May-2017
+* Change Description   : Written using RECORD and MODULES
+********************************************************************/
+
+RECORD consumer
+	DECLARE consID AS INTEGER
+	DECLARE consname AS STRING
+	DECLARE lastMR AS INTEGER
+	DECLARE currMR AS INTEGER
+	DECLARE unit_consumed AS INTEGER
+	DECLARE net_amount AS INTEGER
+END RECORD
+
+BEGIN
+	DECLARE conus AS CONSUMER
+	conus=readDetails()
+	conus=calAmount()
+	conus=display()
+END
+
+/*********************************************************************
+* Module Name         : readDetails()
+* Input Parameters    : conus
+* Return Type         : CONSUMER
+* Author              : Chitra
+* Creation Date       : 23-May-2017
+* Description         : Read the details of consumer
+*********************************************************************/
+
+SUB readDetails()
+	PROMPT "Enter the user ID"
+	ACCEPT conus.consID
+	PROMPT "Enter the user name"
+	ACCEPT conus.consname
+	PROMPT "Enter the last month reading"
+	ACCEPT conus.lastMR
+	PROMPT "Enter the current month reading"
+	ACCEPT conus.currMR
+END
+
+/*********************************************************************
+* Module Name         : calAmount()
+* Input Parameters    : conus
+* Return Type         : CONSUMER
+* Author              : Chitra
+* Creation Date       : 23-May-2017
+* Description         : Calculate the net amount
+*********************************************************************/
+
+SUB calcAmount()
+	DECLARE unit_consumed,net_amount AS INTEGER
+	DECLARE CONSTANT fixed_charge=100 AS INTEGER
+	conus.unit_cosumed=(conus.lastMR)-(conus.currMR)
+        conus.net_amount=unit_consumed*1.15+fixed_charge
+END SUB
+
+/*********************************************************************
+* Module Name         : display()
+* Input Parameters    : conus
+* Return Type         : CONSUMER
+* Author              : Chitra
+* Creation Date       : 23-May-2017
+* Description         : Return number of unique values in an array
+*********************************************************************/
+SUB display()
+	PRINT "The consumer ID is",conus.consID
+	PRINT "The consumer name is",conus.consname
+	PRINT "The consumer unit consumed is",conus.unit_consumed
+	PRINT "The consumer net amount is",conus.net_amount
+END SUB

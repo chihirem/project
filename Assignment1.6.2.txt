@@ -1,0 +1,21 @@
+BEGIN
+    DECLARE number[10] AS INTEGER ARRAY
+    FOR index=0 TO 9
+    ACCEPT number[index]
+    END FOR
+    FOR index=0 TO 9
+    PRINT "The even numbers are"
+    IF number[index]/2==0 THEN
+       DISPLAY number[index]
+    END IF
+    index=index+1
+    END FOR
+    FOR index=0 TO 9
+    PRINT "The odd numbers are"
+    IF number[index]/2!=0 THEN
+       DISPLAY number[index]
+    END IF
+    index=index+1
+    END FOR
+END
+    

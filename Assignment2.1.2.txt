@@ -1,0 +1,25 @@
+/*******************************************************************
+* File                 : Assignment2.1.2.txt
+* Author Name          : Chitra
+* Description          : Program to accept the experience and display their tag Color
+* Version              : 2.1.2
+* Last Modified Date   : 23-May-2017
+* Change Description   : Added header
+********************************************************************/
+
+BEGIN 
+    DECLARE y_o_e AS INTEGER
+    INITIALIZE y_o_e=0
+    PROMPT "Enter the year of experience"
+    ACCEPT y_o_e
+    IF y_o_e=0 && y_o_e<3 THEN
+       PRINT "blue"
+    ELSEIF y_o_e=3 && y_o_e<5 THEN
+       PRINT "grey"
+    ELSEIF y_o_e=5 && y_o_e<10 THEN
+       PRINT "yellow"
+    ELSE 
+       PRINT "red"
+    ENDIF
+END
+

@@ -1,0 +1,25 @@
+ALGORITHM Check(A[0..n-1])
+//Input: An array A[0..n-1] of n real numbers
+  x->A[0]; y->A[0]
+  for i?1 to n-1 do
+   if A[i]<x
+   x->A[i]
+   if A[i]>y
+   y->A[i]
+return y-x
+
+>>Enter the Array with 5 values. A[5,3,4,2,8]
+
+>>The Algorithm computes substraction between the values present in y and x.
+
+>>The basic operation is,
+	>We initialize x and y value with the first number present in the array i.e., x=5,y=5
+	>We do the iteration upto the last element of an array using for loop.
+	>Then we check the condition between the second element and element present in x.
+	>If the second element is smaller than the value present in the x then return the second element into x.
+	>If the second element is greater than the value present in the y then return the second element into y.
+	>Now substract the value present in x and y (y-x).
+
+>>This operation repeats for 4 times i.e., n-1 times.
+
+>>Time Efficiency of the algorithm is O(n)

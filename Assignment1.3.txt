@@ -1,0 +1,17 @@
+BEGIN 
+    DECLARE limit,num,num1,num2,index AS INTEGER
+    INITIALIZE num=0,num1=1
+    PROMPT "Enter the limit"
+    ACCEPT limit
+    FOR index=0 TO limit
+       IF index<=1 THEN
+          num2=index
+       ELSE
+          num2=num+num1
+          num=num1
+          num1=num2
+       PRINT num2
+       ENDIF
+       limit=limit+1
+       END FOR
+END

@@ -1,0 +1,41 @@
+/*******************************************************************
+* File                 : Assignment2.2.txt
+* Author Name          : Chitra
+* Description          : Program to print the sum of digits
+* Version              : 2.2
+* Last Modified Date   : 23-May-2017
+* Change Description   : Added header
+********************************************************************/
+
+
+BEGIN
+    DECLARE num,result AS INTEGER
+    PROMPT "Enter the number"
+    ACCEPT num
+    result=sum_of_digit(num)
+    PRINT "The result of the sum", result
+END
+
+
+/*********************************************************************
+* Module Name         : sum_of_digit()
+* Input Parameters    : num
+* Return Type         : INTEGER
+* Author              : Chitra
+* Creation Date       : 23-May-2017
+* Description         : Sum of digits
+*********************************************************************/
+
+
+SUB sum_of_digit(num)
+    DECLARE sum,remainder,digit
+    INITIALIZE sum TO 0
+    digit=num
+    WHILE num>0	
+          remainder=num%10
+          sum=sum+remainder
+          num=num/10
+    END WHILE
+    RETURN sum
+END SUB
+    

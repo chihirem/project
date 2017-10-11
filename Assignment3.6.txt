@@ -1,0 +1,85 @@
+/*********************************************************************
+ * File                 : 3.6
+ * Author Name          : Chitra
+ * Description          : Program for sorting and searching
+ * Version              : 1.0
+ * Date 	        : 25-05-2017
+*********************************************************************/
+
+
+
+BEGIN
+	DECLARE num[5] AS INTEGER ARRAY
+	DECLARE place AS INTEGER
+	num=getvalues(num,5)
+	num=sort(num,5)
+	place=search(num,5)
+	PRINT "Given number is in"+place+1
+END
+
+/*********************************************************************
+* Module Name         : getvalues(num,n)
+* Input Parameters    : num,n
+* Return Type         : ARRAY
+* Author              : Chitra
+*  Date       	      : 25-05-2017
+*********************************************************************/
+
+
+SUB getvalues(num,n)
+	DECLARE index AS INTEGER
+	PROMPT "ENTER the numbers"
+	FOR index=0 TO n-1
+		ACCEPT num[index]
+	END FOR
+	RETURN num
+END SUB
+
+/*********************************************************************
+* Module Name         : sort(num,n)
+* Input Parameters    : num,n
+* Return Type         : ARRAY
+* Author              : Chitra
+*  Date       	      : 25-05-2017
+*********************************************************************/
+
+SUB sort(num,n)
+	DECLARE index,index1,temp AS INTEGER
+	FOR index=0 TO n-1
+		FOR index1=0 TO n-1-index
+			IF(num[index1]<num[index1+1]
+				temp=num[index1]
+				num[index1]=num[index1+1]
+				num[index1+1]=temp
+			END IF
+		END FOR
+	END FOR
+	RETURN num
+END SUB
+
+/*********************************************************************
+* Module Name         : search(num,n)
+* Input Parameters    : num,n
+* Return Type         : INTEGER
+* Author              : Chitra
+*  Date       	      : 25-05-2017
+*********************************************************************/
+
+SUB search(num,n)
+	DECLARE search,first,place,last AS INTEGER
+	PROMPT "Enter the Number to search" 
+	ACCEPT search
+	first=0
+	last=n-1
+	FOR index=first TO last
+		mid=(first+last)/2
+		IF search ==num[mid] THEN
+			place=mid
+		ELSE IF search<num[mid] THEN
+			last=mid-1
+		ELSE
+			first=mid+1
+		END IF
+	END FOR
+	RETURN place
+END SUB 

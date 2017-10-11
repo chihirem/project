@@ -1,0 +1,23 @@
+/*******************************************************************
+* File                 : Assignment4.3.txt
+* Author Name          : Chitra
+* Description          : Program to calculate total price of a product including tax
+* Version              : 4.3
+* Last Modified Date   : 23-May-2017
+* Change Description   : Added header
+********************************************************************/
+
+BEGIN 
+	DECLARE price AS INTEGER
+	DECLARE CONSTANT tax_rate=0.56
+        DECLARE total_cost AS INTEGER
+        PRINT "Enter the price of your product"
+	IF(price>100 AND price<500)
+		ACCEPT price
+EXCEPTION 
+	WHEN NoSuchPrice THEN
+	PRINT errmessage	
+        INITIALIZE total_cost=0
+        total_cost=price*tax_rate
+        PRINT "The total cost is",total_cost
+END

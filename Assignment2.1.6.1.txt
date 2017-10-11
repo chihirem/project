@@ -1,0 +1,24 @@
+/*******************************************************************
+* File                 : Assignment2.1.6.1.txt
+* Author Name          : Chitra
+* Description          : Program to Display the smallest number
+* Version              : 2.1.6.1
+* Last Modified Date   : 23-May-2017
+* Change Description   : Added header
+********************************************************************/
+
+BEGIN
+    DECLARE number[10] AS INTEGER ARRAY
+    DECLARE min AS INTEGER
+    INITIALIZE min TO 99999
+    FOR index=0 TO 9
+    ACCEPT number[index]
+    END FOR
+    min=number[0]
+    FOR index=0 TO 9
+    IF number[index]<min THEN
+     ` min=number[index]
+    END IF
+    END FOR
+    PRINT min
+END
