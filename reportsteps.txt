@@ -1,0 +1,256 @@
+Report thru Report Wizard
+In the Welcome to Report Builder dialog box, select the option "Use the Report Wizard" and click OK.
+In the Welcome to the Report Wizard! page, click Next.
+In the report layout page, select Create Both Web and Paper Layout and click Next.
+In the report style page, Tabular is selected by default. Set the Title as "My Employee Report". Click Next.
+In the data source type page, SQL Query is selected by default. Click Next.
+In the data source definition page, click Query Builder.
+In the Select Data Tables dialog box, highlight the DEPARTMENTS and EMPLOYEES tables, click Include, and close the dialog box. In the Query Builder window, select the columns from the tables and click OK.
+Click Next. Change the join condition as required.
+Copy all fields from the Available Fields area to the Displayed Fields area. Click Next.
+Click Next on all other Wizard pages and click Finish on the last page.
+Save the Report as D:\myreports\R1thruWizard
+
+Close the Report. Open it again, and Programs, Run Web layout, and then Programs, Run Paper layout
+
+
+
+To open an existing Report 
+Click Reports Builder and launch the executable.
+In the Welcome dialog box of Reports Builder select the Open an existing Report option and click OK.
+Select the file "R1thruWizard" and click Open
+Use the iconic button on the horizontal toolbar, or use the Run Paper Layout option in the Program menu.
+If prompted, connect to the database using the login information.
+Close The Paper Design View.
+Under the Object Navigator, you will notice the following Views of the Report : Data Model, Web Source, Paper Layout
+
+
+
+
+
+
+
+Using the reentrant Report Wizard
+Open the Report "R1thruWizard", save it as "R2reentrant".
+Select Tools > Report Wizard from the menu or the right-mouse-button menu, select Report Wizard(ensuring that you are somewhere in that report)
+
+Modify the query to sort the data in descending order of salary :
+On the Data tab choose Query Builder. In the Query Builder window select Sort icon in the Horizontal bar. Copy the employees.SALARY column from the available  columns to the Sorted Columns, select it, and select Sorting Order as Descending. Click OK to close the Sort Dialog Box. Click OK to close the Query Builder. Click Finish to test your report.
+
+
+
+Add a summary to show the total salary value :
+Reenter the Report Wizard by choosing Report Wizard from the menu. On the Totals tab select SALARY and click Sum. Click Finish to test your report
+
+Change the labels of SALARY and TOTAL in the Labels tab.
+
+Select the Green template.
+Select the Green template on the Template tab and click Finish to test your report.
+
+
+
+
+
+
+
+
+Using the reentrant Wizard, modify the report to create a break report :
+Open the Report "R1thruWizard", save it as "R3Break".
+Select Tools > Report Wizard from the menu or the right-mouse-button menu, select Report Wizard
+On the Style Tab take the style as "Group Above". Then click on the Groups Tab. From the Available Fields, take the Department_Name and move it to the Group Fields. Click Finish to test you report.
+
+
+Mailing Label
+Create a new report by selecting the Reports node in the Object Navigator and choosing the Create icon. As an alternative you can also select File > New > Report from the menu. From the New Report dialog box, select the option "Use the Report Wizard", click OK. Take the  option "Create Paper Layout only". Then take "Mailing label". Then take SQL Query. Click Query Builder. Select the View EMP_Details_View, click Include. Select the columns FIRST_NAME, LAST_NAME, CITY, STATE_PROVINCE, COUNTRY_NAME, REGION_NAME. Click OK, Click Next. From the avialable fileds, select the fields and use the commas, new line, space, dash, period characters to create a Mailing Label Text as follows :
+
+
+Dear &<FIRST_NAME>   &<LAST_NAME> 
+&<CITY>, &<STATE_PROVINCE>,
+&<COUNTRY_NAME> - &<REGION_NAME>. 
+
+
+
+Click Next. Select the Peach pre-defined template. Click Finish to check the Mailing Label Report.
+Save the module as R4MailingLabels
+
+
+
+
+
+
+
+Form Letter
+Create a new report by selecting the Reports node in the Object Navigator and choosing the Create icon. As an alternative you can also select File > New > Report from the menu. From the New Report dialog box, select the option "Use the Report Wizard", click OK. Take the  option "Create Paper Layout only". Then take "Form Letter". Then take SQL Query. Click Query Builder. Select the View EMP_Details_View, click Include. Select the columns EMPLOYEE_ID, FIRST_NAME, LAST_NAME,SALARY. Click OK, Click Next. From the avialable fileds, select the fields and use the commas, new line, space,dash, period characters to create a Form Letter Text as follows :
+
+Dear Mr. &<FIRST_NAME>  &<LAST_NAME>  , 
+
+This is to bring to your kind notice that your salary of Rs.&<SALARY>  will be incremented by 10 percent considering your performance in PLSQL  
+
+
+
+
+Thanks
+HR
+
+
+Click Next. Select the Peach pre-defined template. Click Finish to check the Form Letter Report.
+Save the module as R5FormLetter
+
+
+
+
+
+Changing a Mailing Label to Form Letter
+Open the module R4MailingLabels and save it as R6MailtoForm. On the Style tab select Form Letter. In the Text tab, put the following :
+
+Dear &<FIRST_NAME>   &<LAST_NAME> 
+&<CITY> , &<STATE_PROVINCE> ,
+&<COUNTRY_NAME> - &<REGION_NAME>.
+
+
+Wishing you a very Happy and Properous New year
+
+
+
+
+Click Finish. Save and Run to test Form Letter.
+
+
+You can even change to "Form" style, where each row will appear on a new page, as if someone had manually filled up some paper forms.
+
+
+
+Matrix Report
+Create a new report by selecting the Reports node in the Object Navigator and choosing the Create icon. Select the option "Use the Report Wizard", click Next, select Create both Web and Paper Layout, take the Report style as Matrix, SQL Query, Query Builder, if required login as Scott/tiger@orcl, select the EMP table, Include, take the columns Deptno, Job, Sal. From the avialable fields, take the JOB column into Matrix Row Fields, take Deptno into Matrix Column Fields, take Sum(SAL) as Matric Cell Fields, take Sum(sumsal) and avg(sal) in the Matrix Totals, click Next, take the Report Template as required, click Next, Finish. Save the Report as R7Matrix
+
+
+
+
+
+
+Matrix with Group Report
+Open the Report R7Matrix and save it as R8MatrixGroup. Select Tools > Report Wizard from the menu or the right-mouse-button menu. On the Data Source Tab, click SQL Query, click Next, change the query to include the MGR column so that it looks like : SELECT ALL EMP.SAL, EMP.DEPTNO, EMP.JOB, EMP.MGR FROM EMP.  On the Style tab select Matrix with Group. On the Groups Tab, from the available fiels move mgr to the Matrix Group Fields. Save and Run the Report in web layout.
+
+
+
+
+
+
+Formatting the Paper Layout
+Create a new Report thru the Report Wizard for the EMP table. Take all the fields for display purpose. For the totals step, take sum(sal) and sum(comm). Save  the Report as R9Formatting and Run the report in the Paper Layout. 
+
+
+In the paper Layout Mode do the following :
+Make the SAL column right-justified. Do not forget to justify the column header accordingly. Select the column SAL and its label using the shift key. Then choose Align Right from the style bar or select Format > Justify > Right from the menu.
+
+Add a comma and a currency symbol to SAL. Add two decimal places. While the SALARY column is selected, click Commas from the style bar. This adds the group separators. Click Currency from the style bar. Then click Add Decimal Place from the style bar to add one decimal place. Repeat the action for the second decimal place. You can also select the commas and decimal places options from the Format > Number menu.
+
+Make the total at the end of the report right-justified and add commas, a currency symbol, and two decimal places, as in the column SAL.Select the column, then select Align Right from the style bar or select Format > Justify > Right from the menu. While the column is selected choose Commas, Currency, and then Add Decimal Place from the style bar. Repeat the action for the second decimal place. Change the label of the total to italic font. Select the label, then select Italic from the style bar or use Format > Font in the menu.
+
+These changes are not effected in the web layout.
+
+
+
+
+Create a new Report thru the Report Wizard for the EMP table and take the Report Style as GROUP ABOVE. Take the following query : Select * from emp  join dept on dept.deptno=emp.deptno. From the available fiels take the fields DEPTNO1, dname, loc for the Group Fields. For the Display Fields take all the balance fields from the Available fields. For Totals take sum(sal). In the labels, for the sumsalperdeptno1, take the label as DEPTNO TOTAL, for the sumsalperreport take the label as REPORT TOTAL. Save the Report as R10Formatting and Run the report in the Paper Layout. 
+
+
+In the paper Layout Mode do the following :
+
+Add a border with a with a hairline width around the total for each department. select Format > Line > Line Width > Hairline. Select the column for department total and choose Line Color from the vertical toolbar. Select any color to add the border. 
+
+Add commas and two decimal places to the SAL field and the total and make them right-justified. Do not forget to justify the column header for the SAL field accordingly. Select the total, the column, and its header, then select Align Right from the style bar or select Format > Justify > Right from the menu.
+
+While the column is selected choose Commas and then Add Decimal Place from the style bar. Repeat the action for the second decimal place. You can also select the options from the Format menu.
+
+Move the grand total so that it aligns with the SAL field (you must do this manually; use the ruler guides to help you). Select the grand total, then choose Align Right from the style bar or select Format > Justify > and from the menu. While the grand-total is selected choose Commas and then Add Decimal Place from the style bar. Repeat the action for the second decimal place.
+
+Change the color of the Department data heading to pink by Selecting any label from the Department Heading,  Select Fill Color from the vertical toolbar and then take the Pink Colour.
+
+
+Select Insert > Date and Time from the menu. Choose the font, style, and text color you want.
+
+
+
+Select the column ENAME(value not heading) and choose Select Parent Frame from the style bar. Select Line Color from the vertical toolbar, also choose a Format, Line, Line Width, Hairline. and Format, Line, Dash, ....... style. 
+Similarly, select the Column Heading Ename, and choose Select Parent Frame from the style bar. Select Line Color from the vertical toolbar, also choose a Format, Line, Line Width, Hairline. and Format, Line, Dash, _ _ _ style. You may also select a Fill Color from the vertical toolbar.
+
+Click the Sal value, right click, Conditional Formatting, Click New, and set the followig formatting
+If sal between 0 and 1000, then take some Text Colour, Fill Colour and Border Colour
+If sal between 1001 and 2500, then take some Text Colour, Fill Colour and Border Colour
+If sal between 2501 and 5000, then take some Text Colour, Fill Colour and Border Colour
+If Sal >5000. then take some Text Colour, Fill Colour and Border Colour
+Save the Report and check the Paper Layout View.
+
+
+
+The templates for reports are in the following folder :
+D:\DevSuiteHome_1\reports\template
+In Report Builder, close all existing modules, click File, Open, and open the template D:\DevSuiteHome_1\reports\template\rwblue.tdf. Save the template as D:\DevSuiteHome_1\reports\template\JAIRAJ.tdf. 
+
+Select Template Editor from the Tools menu. If the margin region is not displayed, click the Margin icon in the horizontal toolbar of the Template Editor - Paper Layout. Select the existing Company logo and press the [Delete] key. Select Insert > Image from the menu. Use the Browse button to locate a 4-10kb jpg file. Resize it to fit into the margin region.
+
+Add a report title: Jairay Technologies, by selecting the Text tool from the vertical toolbar. Click inside the editor and type in the title. Select a font and font size after selecting the typed  text. Click outside the textbox to end.
+
+To make changes in the Body section, turn the Margin display to off by clicking the Margin button in the horizontal toolbar in the Template Editor, and make the following changes in the Body Section of  the template :
+Select the number field and the number heading in the Template Editor and click the Align Right tool from the stylebar OR Under Object Navigator, Paper Layout, Section, Body,Default, Fields, click Number, press F4 to see the Property Inspector set Number Justification=Right. Under Object Navigator, Paper Layout, Section, Body,Default, Field Label/Headings, click Number, press F4 to see the Property Inspector set Number Justification=Right.
+Under Object Navigator, Paper Layout, Section, Body,Default,Summaries, select number, press F4 to see the Property Inspector set Number Justification=Right.
+
+In the margin-section, insert date and page-numbers as required
+
+Save the template as D:\DevSuiteHome_1\reports\template\JAIRAJ.tdf. 
+
+Now, create a new Report on the EMP table thru the Report Wizard, and in the step where you decide the template, instead of Pre-Defined Template, click the option Template File, click Browse and select the template D:\DevSuiteHome_1\reports\templates\JaiRaj.tdf. Click Finish to see the Report with the new template.
+
+
+
+
+
+
+Open the template D:\DevSuiteHome_1\reports\templates\JaiRaj.tdf. Save it as D:\DevSuiteHome_1\reports\templates\JaiRajGroup.tdf Under ON, Double click on Paper Layout. In the Template Editor - Paper Layout, on the horizontal toolbar, take the option Group Left for Report Style option. To see the entire template layout structure, and recognize the difference between the master group fields and the detail group fields, select View > Zoom > Zoom Out from the menu. Select the Character, Number, and Date fields and change the text color with the Text color palette.
+In the Object Navigator, Under paper Layout, Override,  then the Group Left, Section(Level1), Fields, Select all the 3 Number, Character, date, press F4 to get the property inspector, take the Textcolor=darkmagenta, Foregroundcolor=Blue, Backgroundcolor=red
+
+Now, create a new Report on the EMP table thru the Report Wizard and take the style as GROUP LEFT, and in the step where you decide the template, instead of Pre-DEfined Template, click the option Template File, click Browse and select the template D:\DevSuiteHome_1\reports\templates\JaiRajGroup.tdf. Click Finish to see the Report with the new template.
+
+
+
+
+
+
+
+Creating a Report Manually
+In the Report Builder, click create (+), take the option "Build a New Report Manually", click OK. In the Data Model page, in the vertical toolbar click SQL QUERY button, and then click in the Data Model page, in the SQL Query Statement Dialog Box, type the following query "SELECT * FROM EMP", click OK. Save the module as R11Manual. 
+
+
+In the ON, double click on Paper Layout. In the Paper Layout page, click the Repeating Frame button from the vertical toolbar, and draw the frame at the top of the page in the Paper Layout page. Name the frame as "EMPDATA". Set the property Source=G_EMPNO, which is the Data Group created earlier in the Data Model page.
+
+Click the Field button in the vertical toolbar, and draw a field in the repeating frame EMPDATA. Set the following two properties
+	Name =FEMPNO	, 	Source = EMPNO
+Similarly, draw 7 other fields, and name them as FENAME, FJOB, FMGR,FSAL, FCOMM, FDEPTNO, FHIREDATE and their Source as ENAME, JOB, MGR,SAL,COMM,DEPTNO, HIREDATE respectively. You can even use copy paste technique, but while moving the fields, you will notice that even the repeating frame gets moved. Hence, you may Right-clcik  anywhere within the frame, and turn on the option Flex Off. 
+save the Report and click Run Paper Layout. If any field is shown as "*******", increas its width
+
+Double click the Paper Layout. In the Horizontal toolbar, click Edit-Margin button. Click on Menu Insert, Image, select the image d:\hemant\hem.jpg(should be file of small size). Adjust the photo in the Margin. From the Vertical toolbar, click the Text button and click in the Header Margin, and type the text :SALONI TECHNOLOGIES". Set its FOnt and Text Size from the Horizontal toolbar at the top, and from the vertical toolbar, select some Text color. Also, Insert, date and Time. Similary, Insert, Page Number. Save the Report and click Run Paper Layout.
+
+
+
+
+
+
+Adding Groups to an existing report
+Create a new report thru the Report wizard on the emp table and take sum(sal) and sum(comm). Save the Report as R12AddGroups. Double click on the Data Model to get the Data Model Editor. Click and drag DEPTNO up out of the G_EMPNO group, creating a new group named G_DEPTNO, above G_EMPNO. Reenter the Report Wizard to update the layout. Select the Group Left style. Save the Report and Run it. Again, double click on the Data Model to get the Data Model Editor. Click and drag JOB up out of the G_EMPNO group, creating a new group named G_JOB, above G_EMPNO but below G_DEPTNO. Reenter the Report Wizard to update the layout. Select the Group Left style, under Groups ensure that JOB is at Level 2 in the Group Fields. Click Finish. Save the Report and Run it.
+
+
+Now, click the Group G_DEPTNO, press F4 to see the Property Inspector. For FILTER TYPE select First, for Number of Records take 2. save and Run the Report.
+Now, click the Group G_JOB, press F4 to see the Property Inspector. For FILTER TYPE select First, for Number of Records take 2. save and Run the Report.
+
+
+
+
+
+
+
+
+
+Multiple Queries in a single Data Model
+Click create(+) Report and take the option "Build a New Report manually". In the Report Editor - Data Model, in the Vertical toolbar, click the button SQL Query and clcik in the Data Model page. Write the following query : SELECT * FROM DEPT. Again click the button SQL Query and clcik in the Data Model page. Write the following query : SELECT * FROM EMP.  Save the Report as R13MultiQuery.
+Click Tool, Report Wizard. Under Groups Tab, for Displayed Groups, take the option Down(G_DEPTNO), Down(G_EMPNO). Go thru the balance of the steps, take all the available fields for display. Save and Run the Report.
